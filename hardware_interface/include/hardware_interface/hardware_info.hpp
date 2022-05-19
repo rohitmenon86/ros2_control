@@ -36,6 +36,8 @@ struct InterfaceInfo
   std::string min;
   /// (Optional) Maximal allowed values of the interface.
   std::string max;
+  /// (Optional) Initial value of the interface.
+  std::string initial_value;
   /// (Optional) The datatype of the interface, e.g. "bool", "int". Used by GPIOs.
   std::string data_type;
   /// (Optional) If the handle is an array, the size of the array. Used by GPIOs.
@@ -82,6 +84,7 @@ struct ActuatorInfo
   std::string name;
   std::vector<std::string> interfaces;
   std::string role;
+  double mechanical_reduction = 1.0;
   double offset = 0.0;
 };
 
@@ -127,6 +130,10 @@ struct HardwareInfo
    * Optional for Actuator and System Hardware.
    */
   std::vector<TransmissionInfo> transmissions;
+  /**
+   * The XML contents prior to parsing
+   */
+  std::string original_xml;
 };
 
 }  // namespace hardware_interface
